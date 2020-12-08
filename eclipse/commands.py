@@ -2,12 +2,12 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from .files import conf_moon, main_moon
-
 _cwd = Path()
 _build = Path() / "build"
 _exclude = ["build", ".vscode", ".moon",
             ".py", ".git"]
+
+PATH = Path(__file__).parent
 
 
 def should_exclude(item=Path):
@@ -31,15 +31,14 @@ def clean():
 
 def init():
     try:
-        with open(f"{_cwd}/main.moon", "w") as entry:
-            entry.write(main_moon)
-
-        with open(f"{_cwd}/conf.moon", "w") as conf:
-            conf.write(conf_moon)
+        _files = PATH / "data"
+        for item in _files.rglob("*"):
+            shutil.copy2(item, _cwd)
 
         print("Initialized new MoonScript LÖVE project successfully.")
     except Exception as e:
         print(f"Failed to initialize project: {e}")
+
 
 def build():
     _build.mkdir(exist_ok=True)

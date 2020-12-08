@@ -1,11 +1,10 @@
-main_moon = """
 love.load = ->
     return
 
 love.update = (dt) ->
     return
 
-love.draw = ->
+love.draw = (screen) ->
     return
 
 love.gamepadpressed = (joy, button) ->
@@ -25,9 +24,3 @@ love.touchreleased = (id, x, y, dx, dy, pressure) ->
 
 love.touchmoved = (id, x, y, dx, dy, pressure) ->
     return
-"""
-
-conf_moon = """
-love.conf = (t) ->
-    return
-"""

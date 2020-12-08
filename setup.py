@@ -21,7 +21,7 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=[],
     packages=find_packages(),
-    package_data={},
+    package_data={"eclipse": ["data/*"]},
     entry_points={'console_scripts': ['eclipse=eclipse.__main__:main']},
     classifiers=[
         'Programming Language :: Python :: 3',
