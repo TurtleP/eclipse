@@ -16,14 +16,14 @@ Primarily useful for [Visual Studio Code](https://code.visualstudio.com/) Tasks,
 
 ## Options
 ```
-usage: lovebrew [-h] [-v] [--version] [-c] [-i]
+❯ eclipse -h
+usage: eclipse [-h] [--clean] [--init] [--version]
 
-Löve Potion Game Helper
+MoonScript & LÖVE Helper
 
 optional arguments:
   -h, --help     show this help message and exit
-  -v, --verbose  Show logging output.
-  --version      show program's version number and exit
-  -c, --clean    Clean the directory
-  -i, --init     Initialize a lovebrew config in the current directory
+  --clean, -c
+  --init, -i
+  --version, -v
 ```
