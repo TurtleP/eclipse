@@ -23,7 +23,7 @@ MoonScript & LÖVE Helper
 
 optional arguments:
   -h, --help     show this help message and exit
-  --clean, -c
-  --init, -i
-  --version, -v
+  --clean, -c    Cleans the build directory
+  --init, -i     Initialize a new LÖVE project, using MoonScript
+  --version, -v  Show version information
 ```
