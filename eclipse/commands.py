@@ -51,9 +51,6 @@ def build():
 
         _files.append(item)
 
-    if len(_files) == 0:
-        return print("No MoonScript files found! Aborting.")
-
     try:
         for item in _files:
             (_build / item).parent.mkdir(parents=True, exist_ok=True)
