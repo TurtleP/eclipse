@@ -12,7 +12,8 @@ To get the latest version from Github, just run
 
 # Usage
 
-Primarily useful for [Visual Studio Code](https://code.visualstudio.com/) Tasks, it can also be used standalone via terminal.
+Primarily useful for [Visual Studio Code](https://code.visualstudio.com/) Tasks, it can also be used standalone via terminal.<br>
+If you would like to see the Tasks I have configured, you may find them [here in this gist](https://gist.github.com/TurtleP/7f60c16266bfdff0a6cc215180d6ef1a)
 
 ## Options
 ```
