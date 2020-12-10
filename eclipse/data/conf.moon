@@ -1,3 +1,2 @@
-
 love.conf = (t) ->
     return
