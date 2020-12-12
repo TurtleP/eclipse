@@ -4,8 +4,8 @@ from pathlib import Path
 
 _cwd = Path()
 _build = Path() / "build"
-_exclude = ["build", ".vscode", ".moon",
-            ".py", ".git"]
+_exclude = ["build", ".moon"]
+_ignore = _cwd / ".eclipseignore"
 
 PATH = Path(__file__).parent
 
@@ -14,9 +14,7 @@ def should_exclude(item=Path):
     for exclusion in _exclude:
         if item.suffix == exclusion:
             return True
-        elif exclusion in str(item):
-            return True
-        elif item.is_dir():
+        elif str(exclusion) in str(item):
             return True
 
     return False
@@ -39,10 +37,17 @@ def init():
     except Exception as e:
         print(f"Failed to initialize project: {e}")
 
+def check_ignore():
+    if _ignore.exists():
+        with open(_ignore, "r") as file:
+            for line in file.readline():
+                _exclude.append(_cwd / line)
 
 def build():
     _build.mkdir(exist_ok=True)
     _files = list()
+
+    check_ignore()
 
     for item in _cwd.rglob("*"):
         if should_exclude(item):
