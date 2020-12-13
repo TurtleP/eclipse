@@ -40,8 +40,9 @@ def init():
 def check_ignore():
     if _ignore.exists():
         with open(_ignore, "r") as file:
-            for line in file.readline():
-                _exclude.append(_cwd / line)
+            lines = [line.rstrip() for line in file]
+            for line in lines:
+                _exclude.append(line)
 
 def build():
     _build.mkdir(exist_ok=True)
@@ -58,7 +59,8 @@ def build():
     try:
         for item in _files:
             (_build / item).parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(item, _build / item)
+            if item.is_file():
+                shutil.copy(item, _build / item)
     except Exception as e:
         print(e)
 
