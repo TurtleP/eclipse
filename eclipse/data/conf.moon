@@ -1,2 +1,0 @@
-love.conf = (t) ->
-    return

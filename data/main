@@ -4,7 +4,7 @@ love.load = ->
 love.update = (dt) ->
     return
 
-love.draw = (screen) ->
+love.draw = ->
     return
 
 love.gamepadpressed = (joy, button) ->
