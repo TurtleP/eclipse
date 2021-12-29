@@ -22,7 +22,7 @@ type
         compiler*: CompilerType
 
 var config*: ConfigFile
-let ConfigFilePath* = os.normalizedPath(os.getCurrentDir() & "/lovebrew.toml")
+let ConfigFilePath* = os.normalizedPath(os.getCurrentDir() & "/eclipse.toml")
 
 proc debug*() =
     echo("[ConfigFile]")
