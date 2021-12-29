@@ -3,10 +3,9 @@
 ## GitHub
 Go check the releases page
 
-## Local
-1. Clone the repository:
-  - `git clone https://github.com/TurtleP/eclipse`
-2. Run `nimble install`
+## Nimble
+`nimble install https://github.com/TurtleP/eclipse.git`
+
 # Usage
 
 Primarily useful for [Visual Studio Code](https://code.visualstudio.com/) Tasks, it can also be used standalone via terminal.<br>
