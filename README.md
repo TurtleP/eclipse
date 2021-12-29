@@ -7,7 +7,6 @@ Go check the releases page
 1. Clone the repository:
   - `git clone https://github.com/TurtleP/eclipse`
 2. Run `nimble install`
-3. 
 # Usage
 
 Primarily useful for [Visual Studio Code](https://code.visualstudio.com/) Tasks, it can also be used standalone via terminal.<br>
