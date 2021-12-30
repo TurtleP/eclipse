@@ -24,7 +24,7 @@ proc init() =
 
     if answer.toLower() == "y":
         try:
-            writeFile(configure.ConfigFilePath, data.DefaultConfigFile)
+            io.writeFile(configure.ConfigFilePath, data.DefaultConfigFile)
         except Exception as e:
             echo(strings.ConfigOverwriteFailed.format(e.msg))
 
@@ -36,8 +36,31 @@ proc clean() =
     if os.dirExists(config.build):
         os.removeDir(config.build)
 
+proc new_project() =
+    ## Create a new main file in the Source directory
+
+    configure.load()
+
+    if not os.dirExists(config.source):
+        os.createDir(config.source)
+
+    let fmtDestination = fmt("{config.source}/main.$1")
+
+    var destination: string =
+        case config.compiler:
+            of CompilerType.MOON:
+                fmtDestination.format("moon")
+            of CompilerType.YUE:
+                fmtDestination.format("yue")
+
+    if not os.fileExists(destination):
+        try:
+            io.writeFile(destination, data.ScriptFile)
+        except IOError as e:
+            echo(e.msg)
+
 proc build() =
-    ## Build the source directory
+    ## Build the Source directory
 
     configure.load()
 
@@ -82,4 +105,4 @@ proc version() =
     echo(AppVersion)
 
 when isMainModule:
-    dispatchMulti([init], [build], [clean], [version])
+    dispatchMulti([init], [build], [new_project], [clean], [version])

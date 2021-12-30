@@ -22,7 +22,9 @@ type
         compiler*: CompilerType
 
 var config*: ConfigFile
-let ConfigFilePath* = os.normalizedPath(os.getCurrentDir() & "/eclipse.toml")
+
+let CurrentDirectory* = os.normalizedPath(os.getCurrentDir())
+let ConfigFilePath* = os.normalizedPath(fmt("{CurrentDirectory}/eclipse.toml"))
 
 proc debug*() =
     echo("[ConfigFile]")
@@ -47,7 +49,7 @@ proc load*() =
 
     let section = toml["options"]
 
-    let defaultExclude = @[".*.yue", ".*.moon", "build"]
+    let defaultExclude = @[".*.yue", ".*.moon", "build", "eclipse.toml", ".*.git"]
 
     config.build = section["build"].getStr()
 
