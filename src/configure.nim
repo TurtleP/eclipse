@@ -10,8 +10,9 @@ import data
 
 type
     CompilerType* = enum
-        YUE = "yue"
-        MOON = "moonc"
+        COMPILER_TYPE_YUE = "yue"
+        COMPILER_TYPE_MOON = "moonc"
+        COMPILER_TYPE_UNKNOWN
 
 type
     ConfigFile = object
@@ -38,6 +39,7 @@ proc hasExclusion*(path: string, x: string): bool =
 
     let found = regex.find(path, pattern, m)
     return found
+
 
 proc load*() =
     var toml: TomlValueRef
@@ -66,8 +68,9 @@ proc load*() =
     config.exclusions = config.exclusions.concat(defaultExclude)
     let compiler = section["compiler"].getStr()
 
-    case compiler:
-        of "yue":
-            config.compiler = CompilerType.YUE
-        of "moonc":
-            config.compiler = CompilerType.MOON
+    try:
+        config.compiler = parseEnum[CompilerType](compiler)
+    except Exception:
+        config.compiler = CompilerType.COMPILER_TYPE_UNKNOWN
+
+    debug()

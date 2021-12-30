@@ -48,10 +48,12 @@ proc new_project() =
 
     var destination: string =
         case config.compiler:
-            of CompilerType.MOON:
+            of CompilerType.COMPILER_TYPE_MOON:
                 fmtDestination.format("moon")
-            of CompilerType.YUE:
+            of CompilerType.COMPILER_TYPE_YUE:
                 fmtDestination.format("yue")
+            else:
+                raise Exception.newException("Unexpected CompilerType!")
 
     if not os.fileExists(destination):
         try:
@@ -75,9 +77,9 @@ proc build() =
     let output = fmt("{os.getCurrentDir()}/{config.build}")
     var command: string
 
-    if compiler == CompilerType.YUE:
+    if compiler == CompilerType.COMPILER_TYPE_YUE:
         command = fmt("yue -s -t {output} {config.source}")
-    elif compiler == CompilerType.MOON:
+    elif compiler == CompilerType.COMPILER_TYPE_MOON:
         command = fmt("moonc -t  {output} {config.source}")
 
     if not compile.compile(command):
