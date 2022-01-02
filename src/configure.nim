@@ -72,5 +72,3 @@ proc load*() =
         config.compiler = parseEnum[CompilerType](compiler)
     except Exception:
         config.compiler = CompilerType.COMPILER_TYPE_UNKNOWN
-
-    debug()
